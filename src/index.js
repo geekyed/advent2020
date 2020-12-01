@@ -40,10 +40,12 @@ fs.readFile(path.join(__dirname, '../input.txt'), 'utf8', function (error, data)
         return (_a = {}, _a[x] = x, _a);
     })));
     input.forEach(function (i) {
-        var toFind = 2020 - i;
-        if (dictionary.hasOwnProperty(toFind)) {
-            console.log(toFind * i);
-            process_1.exit(0);
-        }
+        input.forEach(function (j) {
+            var toFind = 2020 - i - j;
+            if (dictionary.hasOwnProperty(toFind)) {
+                console.log(toFind * i * j);
+                process_1.exit(0);
+            }
+        });
     });
 });

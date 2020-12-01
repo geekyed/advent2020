@@ -13,10 +13,12 @@ fs.readFile(path.join(__dirname, '../input.txt'), 'utf8', (error, data) => {
   let dictionary = Object.assign({}, ...input.map((x) => ({[x]: x})));
 
   input.forEach(i => {
-    const toFind = 2020 - i 
-    if (dictionary.hasOwnProperty(toFind)) {
-      console.log(toFind*i)
-      exit(0)
-    }
+    input.forEach(j => {
+      const toFind = 2020 - i - j
+      if (dictionary.hasOwnProperty(toFind)) {
+        console.log(toFind*i*j)
+        exit(0)
+      }
+    })
   })
 })
