@@ -35,14 +35,12 @@ fs.readFile(path.join(__dirname, '../input.txt'), 'utf8', function (error, data)
         return;
     }
     var input = data.split('\n').map(function (e) { return +e; });
-    var sorted = input.sort(function (a, b) { return a - b; });
-    var dictionary = Object.assign.apply(Object, __spreadArrays([{}], sorted.map(function (x) {
+    var dictionary = Object.assign.apply(Object, __spreadArrays([{}], input.map(function (x) {
         var _a;
         return (_a = {}, _a[x] = x, _a);
     })));
-    sorted.forEach(function (i) {
+    input.forEach(function (i) {
         var toFind = 2020 - i;
-        console.log('to find', toFind);
         if (dictionary.hasOwnProperty(toFind)) {
             console.log(toFind * i);
             process_1.exit(0);

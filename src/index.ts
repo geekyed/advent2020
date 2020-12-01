@@ -10,11 +10,9 @@ fs.readFile(path.join(__dirname, '../input.txt'), 'utf8', (error, data) => {
 
   const input: number[] = data.split('\n').map(e => +e)
 
-  const sorted = input.sort((a, b) => a - b)
+  let dictionary = Object.assign({}, ...input.map((x) => ({[x]: x})));
 
-  let dictionary = Object.assign({}, ...sorted.map((x) => ({[x]: x})));
-
-  sorted.forEach(i => {
+  input.forEach(i => {
     const toFind = 2020 - i 
     if (dictionary.hasOwnProperty(toFind)) {
       console.log(toFind*i)
