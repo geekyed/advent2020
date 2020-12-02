@@ -12,7 +12,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "lint": "standardx \"src/**/*.ts\" | snazzy"
+    "lint": "standardx \"src/**/*.ts\" | snazzy",
+    "run": "node ./dist/index.js "
   },
   "dependencies": {}
 }

@@ -1,24 +1,21 @@
-import * as fs from 'fs'
-import * as path from 'path';
-import { exit } from 'process';
+import { day1 } from './days/day1'
+import { day2 } from './days/day2'
 
-fs.readFile(path.join(__dirname, '../input.txt'), 'utf8', (error, data) => {
-  if (error) {
-    console.log(error)
-    return
-  }
+interface Solutions {
+  [i: number]: Function
+}
 
-  const input: number[] = data.split('\n').map(e => +e)
+const solutions: Solutions = {
+  1: day1,
+  2: day2
+}
 
-  let dictionary = Object.assign({}, ...input.map((x) => ({[x]: x})));
+const day = +process.argv[2]
 
-  input.forEach(i => {
-    input.forEach(j => {
-      const toFind = 2020 - i - j
-      if (dictionary.hasOwnProperty(toFind)) {
-        console.log(toFind*i*j)
-        exit(0)
-      }
-    })
-  })
-})
+solutions[day]()
+
+
+
+
+
+
