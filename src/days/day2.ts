@@ -20,11 +20,9 @@ export const day2 = () => {
       const upper: number = +line.slice(hyphen+1, firstSpace)
       const char: string = line.slice(firstSpace+1, firstSpace+2)
 
-      const password: string = line.slice(colon+2, line.length)
+      const password: string[] = line.slice(colon+2, line.length).split('')
 
-      const numberOfChars: number = password.split('').filter(x => x === char).length
-      
-      if (numberOfChars <= upper && numberOfChars >= lower) count++
+      if ((+(password[lower-1] === char) ^ +(password[upper-1] === char)) === 1) count++
 
     })
     console.log(count)
